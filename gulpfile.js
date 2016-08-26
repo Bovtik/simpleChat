@@ -10,13 +10,13 @@ gulp.task('style', function() {
 				.pipe(sass())
 				.pipe(autoprefixer({
 		      browsers: [
-		        `Android >= ${browsers.android}`,
-		        `Chrome >= ${browsers.chrome}`,
-		        `Firefox >= ${browsers.firefox}`,
-		        `Explorer >= ${browsers.ie}`,
-		        `iOS >= ${browsers.ios}`,
-		        `Opera >= ${browsers.opera}`,
-		        `Safari >= ${browsers.safari}`
+		        'Android >= ${browsers.android}',
+		        'Chrome >= ${browsers.chrome}',
+		        'Firefox >= ${browsers.firefox}',
+		        'Explorer >= ${browsers.ie}',
+		        'iOS >= ${browsers.ios}',
+		        'Opera >= ${browsers.opera}',
+		        'Safari >= ${browsers.safari}'
 		      ],
 		      cascade: false
 		    }))
@@ -32,7 +32,13 @@ gulp.task('babel', function() {
 				.pipe(gulp.dest('dist/js'));
 });
 
+gulp.task('markup', function() {
+	return gulp.src('app/*.html')
+				.pipe(gulp.dest('dist'))
+});
+
 gulp.task('watch', function() {
 	gulp.watch('app/styles/*.scss', ['style']);
 	gulp.watch('app/scripts/**/*.js', ['babel']);
+	gulp.watch('app/*.html', ['markup']);
 });
