@@ -8,7 +8,7 @@ gulp.task('style', function() {
 	return gulp.src('app/styles/main.scss')
 				.pipe(plumber())
 				.pipe(sass())
-				.pipe(autoprefixer({
+				.pipe(prefixer({
 		      browsers: [
 		        'Android >= ${browsers.android}',
 		        'Chrome >= ${browsers.chrome}',
