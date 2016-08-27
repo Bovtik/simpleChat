@@ -1,0 +1,18 @@
+.message {
+	display: inline-block;
+	max-width: 80%;
+	border: 1px solid #ccc;
+	border-radius: 10px;
+	box-shadow: 2px 2px 6px rgba(0,0,0, 0.15);
+	padding: 10px;
+	text-align: left;
+	&__nickname {
+		color: #555;
+		font-size: 16px;
+		margin-bottom: 6px;
+	}
+	&__text {
+		color: #888;
+		font-size: 14px;
+	}
+}

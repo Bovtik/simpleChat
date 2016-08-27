@@ -1,23 +1,17 @@
 var gulp = require('gulp');
 var sass = require('gulp-sass');
 var plumber = require('gulp-plumber');
+var glob = require('gulp-sass-glob');
 var prefixer = require('gulp-autoprefixer');
 var babel = require('gulp-babel');
 
 gulp.task('style', function() {
 	return gulp.src('app/styles/main.scss')
 				.pipe(plumber())
+				.pipe(glob())
 				.pipe(sass())
 				.pipe(prefixer({
-		      browsers: [
-		        'Android >= ${browsers.android}',
-		        'Chrome >= ${browsers.chrome}',
-		        'Firefox >= ${browsers.firefox}',
-		        'Explorer >= ${browsers.ie}',
-		        'iOS >= ${browsers.ios}',
-		        'Opera >= ${browsers.opera}',
-		        'Safari >= ${browsers.safari}'
-		      ],
+		      browsers: ['last 15 versions'],
 		      cascade: false
 		    }))
         .pipe(gulp.dest('dist/css'))

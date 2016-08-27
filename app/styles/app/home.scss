@@ -1,0 +1,27 @@
+* {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	box-sizing: border-box;
+}
+body,
+html {
+	height: 100%;
+}
+body {
+	font: normal 100% 'Open Sans', sans-serif;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+a {
+	text-decoration: none;
+	color: inherit;
+}
+input:-moz-placeholder {
+	opacity: 1;
+}
+input::-moz-placeholder {
+	opacity: 1;
+}
