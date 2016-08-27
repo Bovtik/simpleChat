@@ -29,12 +29,12 @@ messageBtn.addEventListener('click', () => {
 });
 
 socket.on('broadcastMessage', (data) => {
-	createMessage(data.nickname, data.text);
+	createMessage(data.nickname, data.text, data.id);
 });
 
-function createMessage(name, text) {
+function createMessage(name, text, id) {
 	let message = document.createElement('div');
-	message.className = "message-wrap";
+	(socket.id == id) ? message.className = "message-wrap message-wrap--right" : message.className = "message-wrap";
 	message.innerHTML = `
 		<div class="message">
 			<div class="message__nickname">${name}</div>

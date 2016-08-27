@@ -31,12 +31,12 @@ messageBtn.addEventListener('click', function () {
 });
 
 socket.on('broadcastMessage', function (data) {
-	createMessage(data.nickname, data.text);
+	createMessage(data.nickname, data.text, data.id);
 });
 
-function createMessage(name, text) {
+function createMessage(name, text, id) {
 	var message = document.createElement('div');
-	message.className = "message-wrap";
+	socket.id == id ? message.className = "message-wrap message-wrap--right" : message.className = "message-wrap";
 	message.innerHTML = '\n\t\t<div class="message">\n\t\t\t<div class="message__nickname">' + name + '</div>\n\t\t\t<div class="message__text">' + text + '</div>\n\t\t</div>\n\t';
 	messageHolder.appendChild(message);
 	messageHolder.scrollTop = messageHolder.scrollHeight;
