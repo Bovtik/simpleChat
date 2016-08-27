@@ -28,3 +28,20 @@ messageBtn.addEventListener('click', () => {
 	};
 });
 
+socket.on('broadcastMessage', (data) => {
+	createMessage(data.nickname, data.text);
+});
+
+function createMessage(name, text) {
+	let message = document.createElement('div');
+	message.className = "message-wrap";
+	message.innerHTML = `
+		<div class="message">
+			<div class="message__nickname">${name}</div>
+			<div class="message__text">${text}</div>
+		</div>
+	`;
+	messageHolder.appendChild(message);
+	messageHolder.scrollTop = messageHolder.scrollHeight;
+};
+
