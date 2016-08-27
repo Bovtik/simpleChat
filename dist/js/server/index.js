@@ -8,14 +8,24 @@ var path = require('path');
 var express = require('express');
 var app = express();
 
-app.use('/', express.static(path.join(path.join(__dirname, '..'), '..')));
+var io = require('socket.io')(8081);
 
 app.use('/js', express.static(path.join(path.join(__dirname, '..'), 'client')));
 
+['css', 'images', 'data'].forEach(function (item) {
+	var tmpPath = '/' + item;
+	app.use(tmpPath, express.static(path.join(path.join(path.join(__dirname, '..'), '..'), tmpPath)));
+});
+
 app.get('/', function (req, res) {
-  res.sendFile('index.html');
+	var layout = fs.readFileSync('dist/index.html', 'utf8');
+	res.send(layout);
+});
+
+io.on('connection', function (socket) {
+	console.log('someone connected');
 });
 
 app.listen(port, function () {
-  console.log('Listening on ' + port + ' port');
+	console.log('Listening on ' + port + ' port');
 });
