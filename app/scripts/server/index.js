@@ -38,7 +38,7 @@ io.on('connection', (socket) => {
 	});
 
 	socket.on('disconnect', () => {
-		console.log(`User with id $(socket.id) disconnected`);
+		console.log(`User with id ${socket.id} disconnected`);
 	})
 });
 
