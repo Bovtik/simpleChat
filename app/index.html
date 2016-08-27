@@ -6,11 +6,25 @@
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
 	<link rel="stylesheet" href="css/main.css">
 </head>
+<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+<script>
+	var socket = io.connect('http://localhost:8081');
+</script>
 <body>
+	<div class="connect-modal" id="connect-modal">
+		<div class="connect-modal__layout"></div>
+		<div class="connect-modal-content">
+			<div class="connect-modal-content__title">хелло</div>
+			<div class="input-wrap input-wrap--modal">
+				<input type="text" placeholder="Ваше имя" id="modal-text">
+			</div>
+			<div class="btn btn--modal" id="modal-btn">продолжить</div>
+		</div>
+	</div>
 	<div class="wrapper">
 		<header id="header"></header>
 		<div class="chat-wrap">
-			<div class="chat-box">
+			<div class="chat-box" id="message-holder">
 				<div class="message-wrap">
 					<div class="message">
 						<div class="message__nickname">Kostik Butenko</div>
@@ -49,15 +63,17 @@
 				</div>
 			</div>
 			<div class="message-form-box">
-				<div class="message-form-box__input-wrap">
-					<input type="text" placeholder="Ваше сообщение">
+				<div class="input-wrap">
+					<input type="text" placeholder="Ваше сообщение" id="message-input">
 				</div>
-				<button class="message-form-box__btn">отправить</button>
+				<button class="btn" id="message-btn">отправить</button>
 			</div>
 		</div>
 	</div>
 	<footer id="footer">
 		<div class="footer_copy">КОПИРАЙТ</div>
 	</footer>
+
+	<script src="js/index.js"></script>
 </body>
 </html>

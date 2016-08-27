@@ -1,0 +1,22 @@
+.btn {
+	display: inline-block;
+	vertical-align: top;
+	line-height: 38px;
+	height: 40px;
+	width: 20%;
+	border-radius: 5px;
+	font-size: 14px;
+	cursor: pointer;
+	transition: .3s ease;
+	border: 1px solid #bbb;
+	-webkit-appearance: none;
+	&:hover {
+		background-color: #fff;
+		box-shadow: 2px 2px 7px rgba(0,0,0, 0.15);
+	}
+	&--modal {
+		width: 100%;
+		background-color: #f3f3f3;
+		text-align: center;
+	}
+}
