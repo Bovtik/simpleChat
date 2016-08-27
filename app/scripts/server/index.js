@@ -47,7 +47,7 @@ io.on('connection', (socket) => {
 
 	socket.on('sendMessage', (data) => {
 		console.log(`${userInfo[data.id]}: ${data.text}`);
-		socket.emit('broadcastMessage', {
+		io.sockets.emit('broadcastMessage', {
 			id: data.id,
 			nickname: userInfo[data.id],
 			text: data.text
