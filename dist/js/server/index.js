@@ -30,6 +30,15 @@ io.on('connection', function (socket) {
 		userInfo[data.id] = data.nickname;
 	});
 
+	socket.on('sendMessage', function (data) {
+		console.log(userInfo[data.id] + ': ' + data.text);
+		socket.emit('broadcastMessage', {
+			id: data.id,
+			nickname: userInfo[data.id],
+			text: data.text
+		});
+	});
+
 	socket.on('disconnect', function () {
 		console.log('User with id ' + socket.id + ' disconnected');
 	});

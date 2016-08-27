@@ -37,6 +37,15 @@ io.on('connection', (socket) => {
 		userInfo[data.id] = data.nickname;
 	});
 
+	socket.on('sendMessage', (data) => {
+		console.log(`${userInfo[data.id]}: ${data.text}`);
+		socket.emit('broadcastMessage', {
+			id: data.id,
+			nickname: userInfo[data.id],
+			text: data.text
+		});
+	})
+
 	socket.on('disconnect', () => {
 		console.log(`User with id ${socket.id} disconnected`);
 	})
