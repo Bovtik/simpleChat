@@ -11,19 +11,7 @@ gulp.task('style', function() {
 				.pipe(glob())
 				.pipe(sass())
 				.pipe(prefixer({
-<<<<<<< HEAD
 		      browsers: ['last 15 versions'],
-=======
-		      browsers: [
-		        'Android >= ${browsers.android}',
-		        'Chrome >= ${browsers.chrome}',
-		        'Firefox >= ${browsers.firefox}',
-		        'Explorer >= ${browsers.ie}',
-		        'iOS >= ${browsers.ios}',
-		        'Opera >= ${browsers.opera}',
-		        'Safari >= ${browsers.safari}'
-		      ],
->>>>>>> 197738c6f18a00659a93a6d9b25a914f0e569a49
 		      cascade: false
 		    }))
         .pipe(gulp.dest('dist/css'))
