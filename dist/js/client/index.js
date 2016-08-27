@@ -9,12 +9,23 @@ var messageBtn = document.querySelector('#message-btn');
 
 modalBtn.addEventListener('click', function () {
 	if (modalText.value != '') {
-		var user_name = modalText.value;
+		var userName = modalText.value;
 		modalText.value = '';
 		connectModal.style.display = 'none';
 		socket.emit('setNickname', {
 			id: socket.id,
-			nickname: user_name
+			nickname: userName
+		});
+	};
+});
+
+messageBtn.addEventListener('click', function () {
+	if (messageText.value != '') {
+		var userMessage = messageText.value;
+		messageText.value = '';
+		socket.emit('sendMessage', {
+			id: socket.id,
+			text: userMessage
 		});
 	};
 });

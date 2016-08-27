@@ -7,12 +7,24 @@ const messageBtn = document.querySelector('#message-btn');
 
 modalBtn.addEventListener('click', () => {
 	if (modalText.value != '') {
-		let user_name = modalText.value;
+		const userName = modalText.value;
 		modalText.value = '';
 		connectModal.style.display = 'none';
 		socket.emit('setNickname', {
 			id: socket.id,
-			nickname: user_name
+			nickname: userName
 		});
 	};
 });
+
+messageBtn.addEventListener('click', () => {
+	if (messageText.value != '') {
+		let userMessage = messageText.value;
+		messageText.value = '';
+		socket.emit('sendMessage', {
+			id: socket.id,
+			text: userMessage
+		});
+	};
+});
+
