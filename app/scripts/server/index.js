@@ -29,10 +29,17 @@ app.get('/', (req, res) => {
 	res.send(layout)
 });
 
-
+let userInfo = {};
 
 io.on('connection', (socket) => {
-	console.log('someone connected');
+
+	socket.on('setNickname', (data) => {
+		userInfo[data.id] = data.nickname;
+	});
+
+	socket.on('disconnect', () => {
+		console.log(`User with id $(socket.id) disconnected`);
+	})
 });
 
 

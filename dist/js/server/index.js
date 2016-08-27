@@ -22,8 +22,17 @@ app.get('/', function (req, res) {
 	res.send(layout);
 });
 
+var userInfo = {};
+
 io.on('connection', function (socket) {
-	console.log('someone connected');
+
+	socket.on('setNickname', function (data) {
+		userInfo[data.id] = data.nickname;
+	});
+
+	socket.on('disconnect', function () {
+		console.log('User with id $(socket.id) disconnected');
+	});
 });
 
 app.listen(port, function () {
