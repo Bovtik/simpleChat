@@ -8,8 +8,6 @@ var path = require('path');
 var express = require('express');
 var app = express();
 
-var io = require('socket.io')(8081);
-
 app.use('/js', express.static(path.join(path.join(__dirname, '..'), 'client')));
 
 ['css', 'images', 'data'].forEach(function (item) {
@@ -21,6 +19,12 @@ app.get('/', function (req, res) {
 	var layout = fs.readFileSync('dist/index.html', 'utf8');
 	res.send(layout);
 });
+
+var server = app.listen(port, function () {
+	console.log('Listening on ' + port + ' port');
+});
+
+var io = require('socket.io').listen(server);
 
 var userInfo = {};
 
@@ -42,8 +46,4 @@ io.on('connection', function (socket) {
 	socket.on('disconnect', function () {
 		console.log('User with id ' + socket.id + ' disconnected');
 	});
-});
-
-app.listen(port, function () {
-	console.log('Listening on ' + port + ' port');
 });

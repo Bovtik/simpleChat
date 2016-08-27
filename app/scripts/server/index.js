@@ -6,8 +6,6 @@ const path = require('path');
 const express = require('express');
 const app = express();
 
-const io = require('socket.io')(8081);
-
 
 
 app.use('/js',
@@ -28,6 +26,16 @@ app.get('/', (req, res) => {
 	let layout = fs.readFileSync('dist/index.html', 'utf8');
 	res.send(layout)
 });
+
+
+
+const server = app.listen(port, () => {
+	console.log(`Listening on ${port} port`);
+});
+
+
+
+const io = require('socket.io').listen(server);
 
 let userInfo = {};
 
@@ -50,10 +58,3 @@ io.on('connection', (socket) => {
 		console.log(`User with id ${socket.id} disconnected`);
 	})
 });
-
-
-
-app.listen(port, () => {
-	console.log(`Listening on ${port} port`);
-});
-
