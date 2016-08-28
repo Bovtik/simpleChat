@@ -182,6 +182,12 @@ input::-moz-placeholder {
     margin-bottom: 0; }
   .message-wrap--right {
     text-align: right; }
+  .message-wrap--center {
+    text-align: center; }
+  .message-wrap__connect {
+    font-size: 14px;
+    font-weight: 700;
+    color: #999; }
 
 .message {
   display: inline-block;

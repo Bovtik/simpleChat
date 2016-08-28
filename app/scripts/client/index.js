@@ -42,6 +42,14 @@ socket.on('broadcastNicknames', (data) => {
 	setUsersList(data.nicknames);
 });
 
+socket.on('userConnect', (data) => {
+	createUserConnect(data.nickname);
+});
+
+socket.on('userDisonnect', (data) => {
+	createUserDisconnect(data.nickname);
+});
+
 function submitModal() {
 	const userName = modalText.value;
 	modalText.value = '';
@@ -79,6 +87,24 @@ function createMessage(name, text, time, id) {
 		message.querySelector('.message__nickname').className += " message__nickname--right";
 	};
 	messageHolder.scrollTop = messageHolder.scrollHeight;
+};
+
+function createUserConnect(name) {
+	let message = document.createElement('span');
+	message.className = "message-wrap message-wrap--center";
+	message.innerHTML = `
+		<span class="message-wrap__connect">${name} connected</span>
+	`;
+	messageHolder.appendChild(message);
+};
+
+function createUserDisconnect(name) {
+	let message = document.createElement('span');
+	message.className = "message-wrap message-wrap--center";
+	message.innerHTML = `
+		<span class="message-wrap__connect">${name} disconnected</span>
+	`;
+	messageHolder.appendChild(message);
 };
 
 function setUsersList(arr) {
