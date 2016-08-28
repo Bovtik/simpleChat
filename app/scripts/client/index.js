@@ -4,6 +4,7 @@ const connectModal = document.querySelector('#connect-modal');
 const messageHolder = document.querySelector('#message-holder');
 const messageText = document.querySelector('#message-input');
 const messageBtn = document.querySelector('#message-btn');
+const usersList = document.querySelector('#users-list');
 
 window.onload = () => {
 	modalText.focus();
@@ -35,6 +36,10 @@ messageText.addEventListener('keydown', (event) => {
 
 socket.on('broadcastMessage', (data) => {
 	createMessage(data.nickname, data.text, data.id);
+});
+
+socket.on('broadcastNicknames', (data) => {
+	setUsersList(data.nicknames);
 });
 
 function submitModal() {
@@ -72,5 +77,14 @@ function createMessage(name, text, id) {
 		message.querySelector('.message__nickname').className += " message__nickname--right";
 	};
 	messageHolder.scrollTop = messageHolder.scrollHeight;
+};
+
+function setUsersList(arr) {
+	arr.sort();
+	arr.forEach(item, i, arr) {
+		let listItem = document.createElement('li');
+		listItem.innerHTML = item;
+		arr.appendChild(listItem);
+	};
 };
 

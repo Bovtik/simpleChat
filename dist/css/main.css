@@ -202,3 +202,53 @@ input::-moz-placeholder {
   .message__text {
     color: #888;
     font-size: 14px; }
+
+.users-box {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  width: 300px;
+  z-index: 5;
+  border: 1px solid #666;
+  border-bottom: 0;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  background-color: #f3f3f3; }
+  .users-box__show-btn {
+    background-color: #ddd;
+    font-size: 14px;
+    text-align: center;
+    -webkit-transition: .3s ease;
+    transition: .3s ease;
+    cursor: pointer;
+    line-height: 30px; }
+    .users-box__show-btn:hover {
+      background-color: #fff; }
+    .users-box__show-btn--show {
+      -webkit-border-radius: 5px 5px 0 0;
+      border-radius: 5px 5px 0 0; }
+    .users-box__show-btn--hide {
+      -webkit-border-radius: 0;
+      border-radius: 0; }
+  .users-box__list {
+    list-style: none;
+    font-size: 15px;
+    color: #666; }
+    .users-box__list li {
+      margin-bottom: 4px;
+      padding: 0 4px; }
+      .users-box__list li:first-child {
+        padding: 4px 4px 0; }
