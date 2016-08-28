@@ -197,6 +197,8 @@ input::-moz-placeholder {
     color: #555;
     font-size: 16px;
     margin-bottom: 6px; }
+    .message__nickname--right {
+      text-align: right; }
   .message__text {
     color: #888;
     font-size: 14px; }
