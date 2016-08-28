@@ -195,12 +195,12 @@ input::-moz-placeholder {
   text-align: left; }
   .message__nickname {
     color: #555;
-    font-size: 16px;
+    font-size: 14px;
     margin-bottom: 6px; }
     .message__nickname--right {
       text-align: right; }
   .message__text {
-    color: #888;
+    color: #333;
     font-size: 14px; }
   .message__time {
     font-size: 12px;

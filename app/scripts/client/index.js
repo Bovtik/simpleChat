@@ -59,8 +59,7 @@ function sendMessage() {
 	let date = new Date();
 	socket.emit('sendMessage', {
 		id: socket.id,
-		text: userMessage,
-		time: date.getHours() + ':' + date.getMinutes()
+		text: userMessage
 	});
 };
 
