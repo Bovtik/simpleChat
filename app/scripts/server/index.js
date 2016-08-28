@@ -45,6 +45,7 @@ io.on('connection', (socket) => {
 		userInfo[data.id] = data.nickname;
 		console.log(`${data.nickname} connected`);
 
+		socket.emit('userConnect', {nickname: userInfo[id]});
 		sendNicknameList();
 	});
 
@@ -63,6 +64,7 @@ io.on('connection', (socket) => {
 		console.log(`User ${userInfo[id]} disconnected (id: ${id})`);
 		delete userInfo[id];
 
+		socket.emit('userDisconnect', {nickname: userInfo[id]});
 		sendNicknameList();
 	})
 });
