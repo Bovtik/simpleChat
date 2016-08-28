@@ -6,6 +6,7 @@ var connectModal = document.querySelector('#connect-modal');
 var messageHolder = document.querySelector('#message-holder');
 var messageText = document.querySelector('#message-input');
 var messageBtn = document.querySelector('#message-btn');
+var usersList = document.querySelector('#users-list');
 
 window.onload = function () {
 	modalText.focus();
@@ -39,6 +40,10 @@ socket.on('broadcastMessage', function (data) {
 	createMessage(data.nickname, data.text, data.id);
 });
 
+socket.on('broadcastNicknames', function (data) {
+	setUsersList(data.nicknames);
+});
+
 function submitModal() {
 	var userName = modalText.value;
 	modalText.value = '';
@@ -69,4 +74,14 @@ function createMessage(name, text, id) {
 		message.querySelector('.message__nickname').className += " message__nickname--right";
 	};
 	messageHolder.scrollTop = messageHolder.scrollHeight;
+};
+
+function setUsersList(arr) {
+	arr.sort();
+	usersList.innerHTML = '';
+	arr.forEach(function (item, i, arr) {
+		var listItem = document.createElement('li');
+		listItem.innerHTML = item;
+		usersList.appendChild(listItem);
+	});
 };

@@ -81,10 +81,11 @@ function createMessage(name, text, id) {
 
 function setUsersList(arr) {
 	arr.sort();
-	arr.forEach(item, i, arr) {
+	usersList.innerHTML = '';
+	arr.forEach((item, i, arr) => {
 		let listItem = document.createElement('li');
 		listItem.innerHTML = item;
-		arr.appendChild(listItem);
-	};
+		usersList.appendChild(listItem);
+	});
 };
 

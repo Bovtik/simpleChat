@@ -17,9 +17,9 @@ function initCollapse(settings) {
 
 	var collapseTrn = collapseDuration + ' ' + collapseType;
 
-	collapseArr.forEach(function (item, i, arr) {
-		item.style.height = '0';
-	});
+	for (var i = 0; i < collapseArr.length; i++) {
+		collapseArr[i].style.height = '0';
+	};
 
 	collapseBtn.addEventListener('click', collapse);
 
@@ -31,7 +31,9 @@ function initCollapse(settings) {
 			collapseBody.style.height = '0';
 			setTimeout(function () {
 				collapseBody.style.transition = collapseTrn;
-				collapseBody.style.height = temp_h;
+				setTimeout(function () {
+					collapseBody.style.height = temp_h;
+				}, 20);
 			}, 1);
 			collapseBtn.innerHTML = 'hide';
 			setTimeout(function () {
