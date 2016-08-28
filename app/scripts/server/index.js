@@ -45,15 +45,7 @@ io.on('connection', (socket) => {
 		userInfo[data.id] = data.nickname;
 		console.log(`${data.nickname} connected`);
 
-		let userList = [];
-
-		for (let key in userInfo) {
-			userList.push(userInfo[key]);
-		}
-
-		io.sockets.emit('broadcastNicknames', {
-			nicknames: userList
-		});
+		sendNicknameList();
 	});
 
 	socket.on('sendMessage', (data) => {
@@ -67,7 +59,21 @@ io.on('connection', (socket) => {
 	})
 
 	socket.on('disconnect', () => {
-		console.log(`User with id ${socket.id} disconnected`);
+		console.log(`User ${userInfo[socket.id]} disconnected (id: ${socket.id})`);
 		delete userInfo[socket.id];
+
+		sendNicknameList();
 	})
 });
+
+function sendNicknameList () {
+	let userList = [];
+
+	for (let key in userInfo) {
+		userList.push(userInfo[key]);
+	}
+
+	io.sockets.emit('broadcastNicknames', {
+		nicknames: userList
+	});
+}
