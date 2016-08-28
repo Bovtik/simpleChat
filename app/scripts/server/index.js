@@ -46,7 +46,7 @@ io.on('connection', (socket) => {
 		console.log(`${data.nickname} connected`);
 
 		let userList = [];
-		
+
 		for (let key in userInfo) {
 			userList.push(userInfo[key]);
 		}
@@ -68,5 +68,6 @@ io.on('connection', (socket) => {
 
 	socket.on('disconnect', () => {
 		console.log(`User with id ${socket.id} disconnected`);
+		delete userInfo[socket.id];
 	})
 });
