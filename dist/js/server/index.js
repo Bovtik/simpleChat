@@ -32,10 +32,22 @@ io.on('connection', function (socket) {
 
 	socket.on('setNickname', function (data) {
 		userInfo[data.id] = data.nickname;
+		console.log(data.nickname + ' connected');
+
+		var userList = [];
+
+		for (var key in userInfo) {
+			userList.push(userInfo[key]);
+		}
+
+		io.sockets.emit('broadcastNicknames', {
+			nicknames: userList
+		});
 	});
 
 	socket.on('sendMessage', function (data) {
 		console.log(userInfo[data.id] + ': ' + data.text);
+
 		io.sockets.emit('broadcastMessage', {
 			id: data.id,
 			nickname: userInfo[data.id],
