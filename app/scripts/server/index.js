@@ -59,7 +59,8 @@ io.on('connection', (socket) => {
 	})
 
 	socket.on('disconnect', () => {
-		console.log(`User ${userInfo[socket.id]} disconnected (id: ${socket.id})`);
+		let id = socket.id.substring(2);
+		console.log(`User ${userInfo[id]} disconnected (id: ${socket.id})`);
 		delete userInfo[socket.id];
 
 		sendNicknameList();

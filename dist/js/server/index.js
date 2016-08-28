@@ -48,7 +48,8 @@ io.on('connection', function (socket) {
 	});
 
 	socket.on('disconnect', function () {
-		console.log('User ' + userInfo[socket.id] + ' disconnected (id: ' + socket.id + ')');
+		var id = socket.id.substring(2);
+		console.log('User ' + userInfo[id] + ' disconnected (id: ' + socket.id + ')');
 		delete userInfo[socket.id];
 
 		sendNicknameList();
