@@ -37,7 +37,7 @@ messageText.addEventListener('keydown', function (event) {
 });
 
 socket.on('broadcastMessage', function (data) {
-	createMessage(data.nickname, data.text, data.id);
+	createMessage(data.nickname, data.text, data.time, data.id);
 });
 
 socket.on('broadcastNicknames', function (data) {
@@ -58,16 +58,18 @@ function submitModal() {
 function sendMessage() {
 	var userMessage = messageText.value;
 	messageText.value = '';
+	var date = new Date();
 	socket.emit('sendMessage', {
 		id: socket.id,
-		text: userMessage
+		text: userMessage,
+		time: date.getHours() + ':' + date.getMinutes()
 	});
 };
 
-function createMessage(name, text, id) {
+function createMessage(name, text, time, id) {
 	var message = document.createElement('div');
 	message.className = "message-wrap";
-	message.innerHTML = '\n\t\t<div class="message">\n\t\t\t<div class="message__nickname">' + name + '</div>\n\t\t\t<div class="message__text">' + text + '</div>\n\t\t</div>\n\t';
+	message.innerHTML = '\n\t\t<div class="message">\n\t\t\t<div class="message__nickname">' + name + '</div>\n\t\t\t<span class="message__text">' + text + '</span>\n\t\t\t<span class="message__time">' + time + '</span>\n\t\t</div>\n\t';
 	messageHolder.appendChild(message);
 	if (socket.id == id) {
 		message.className += " message-wrap--right";
