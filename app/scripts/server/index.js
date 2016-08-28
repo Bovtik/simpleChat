@@ -52,7 +52,9 @@ io.on('connection', (socket) => {
 		console.log(`${userInfo[data.id]}: ${data.text}`);
 
 		data.nickname = userInfo[data.id];
-		
+		let date = new Date();
+		data.time = date.getHours() + ':' + date.getMinutes();
+
 		io.sockets.emit('broadcastMessage', data);
 	})
 

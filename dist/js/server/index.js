@@ -41,6 +41,8 @@ io.on('connection', function (socket) {
 		console.log(userInfo[data.id] + ': ' + data.text);
 
 		data.nickname = userInfo[data.id];
+		var date = new Date();
+		data.time = date.getHours() + ':' + date.getMinutes();
 
 		io.sockets.emit('broadcastMessage', data);
 	});
