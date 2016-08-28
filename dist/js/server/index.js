@@ -34,7 +34,7 @@ io.on('connection', function (socket) {
 		userInfo[data.id] = data.nickname;
 		console.log(data.nickname + ' connected');
 
-		socket.emit('userConnect', { nickname: userInfo[id] });
+		io.sockets.emit('userConnect', { nickname: data.nickname });
 		sendNicknameList();
 	});
 
@@ -53,7 +53,7 @@ io.on('connection', function (socket) {
 		console.log('User ' + userInfo[id] + ' disconnected (id: ' + id + ')');
 		delete userInfo[id];
 
-		socket.emit('userDisconnect', { nickname: userInfo[id] });
+		io.sockets.emit('userDisconnect', { nickname: userInfo[id] });
 		sendNicknameList();
 	});
 });

@@ -46,7 +46,7 @@ socket.on('userConnect', (data) => {
 	createUserConnect(data.nickname);
 });
 
-socket.on('userDisonnect', (data) => {
+socket.on('userDisconnect', (data) => {
 	createUserDisconnect(data.nickname);
 });
 
@@ -90,21 +90,23 @@ function createMessage(name, text, time, id) {
 };
 
 function createUserConnect(name) {
-	let message = document.createElement('span');
+	let message = document.createElement('div');
 	message.className = "message-wrap message-wrap--center";
 	message.innerHTML = `
 		<span class="message-wrap__connect">${name} connected</span>
 	`;
 	messageHolder.appendChild(message);
+	messageHolder.scrollTop = messageHolder.scrollHeight;
 };
 
 function createUserDisconnect(name) {
-	let message = document.createElement('span');
+	let message = document.createElement('div');
 	message.className = "message-wrap message-wrap--center";
 	message.innerHTML = `
 		<span class="message-wrap__connect">${name} disconnected</span>
 	`;
 	messageHolder.appendChild(message);
+	messageHolder.scrollTop = messageHolder.scrollHeight;
 };
 
 function setUsersList(arr) {
