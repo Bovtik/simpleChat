@@ -32,7 +32,7 @@ gulp.task('markup', function() {
 });
 
 gulp.task('watch', function() {
-	gulp.watch('app/styles/*.scss', ['style']);
+	gulp.watch('app/styles/**/*.scss', ['style']);
 	gulp.watch('app/scripts/**/*.js', ['babel']);
 	gulp.watch('app/*.html', ['markup']);
 });

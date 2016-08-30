@@ -6,12 +6,13 @@
 	width: 20%;
 	border-radius: 5px;
 	font-size: 14px;
+	color: #333;
 	cursor: pointer;
 	transition: .3s ease;
-	border: 1px solid #bbb;
+	border: 1px solid #999;
 	-webkit-appearance: none;
 	&:hover {
-		background-color: #fff;
+		background-color: #eee;
 		box-shadow: 2px 2px 7px rgba(0,0,0, 0.15);
 	}
 	&--modal {
