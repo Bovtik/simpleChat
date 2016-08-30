@@ -14,17 +14,12 @@
 	<div class="connect-modal" id="connect-modal">
 		<div class="connect-modal__layout"></div>
 		<div class="connect-modal-content">
-			<div class="connect-modal-content__title">хелло</div>
+			<div class="connect-modal-content__title">Welcome!</div>
 			<div class="input-wrap input-wrap--modal">
-				<input type="text" placeholder="Ваше имя" id="modal-text" value="">
+				<input type="text" placeholder="Enter your nickname..." id="modal-text" value="">
 			</div>
-			<div class="btn btn--modal" id="modal-btn">продолжить</div>
+			<div class="btn btn--modal" id="modal-btn">Continue</div>
 		</div>
-	</div>
-	<div class="users-box">
-		<ul class="users-box__list" data-collapse="1" id="users-list">
-		</ul>
-		<div class="users-box__show-btn users-box__show-btn--show">users-list</div>
 	</div>
 	<div class="wrapper">
 		<header id="header"></header>
@@ -33,14 +28,20 @@
 			</div>
 			<div class="message-form-box">
 				<div class="input-wrap">
-					<input type="text" placeholder="Ваше сообщение" id="message-input" value="">
+					<input type="text" placeholder="Enter your message..." id="message-input" value="">
 				</div>
-				<button class="btn" id="message-btn">отправить</button>
+				<button class="btn" id="message-btn">send</button>
 			</div>
 		</div>
 	</div>
+
+	<div class="users-box">
+		<ul class="users-box__list" data-collapse="1" id="users-list">
+		</ul>
+		<div class="users-box__show-btn users-box__show-btn--show">User list</div>
+	</div>
 	<footer id="footer">
-		<div class="footer_copy">КОПИРАЙТ</div>
+		<div class="footer_copy">Copyright</div>
 	</footer>
 	
 	<script src="js/collapse.js"></script>
