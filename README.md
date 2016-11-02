@@ -1,2 +1,2 @@
 # simpleChat
-Simple messanger web-app; nodejs + socket.io
+Simple messenger web-app; nodejs + socket.io
